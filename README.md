@@ -15,13 +15,15 @@ Live-Server is a small http server that use used to quickly test updates.
 		sudo npm install -g  babel-cli
 Babel is the JSX compiler.
 
---
+---
+
 # Sync code
 Clone this repo to your local development environment.
 
 	git clone (use with HTTPS or SSH)
 
---
+---
+
 # Project-specific setup
 
 Install the local Babel presets needed for this project. The presets are **env** and **react**
@@ -35,7 +37,8 @@ Install the local Babel presets needed for this project. The presets are **env**
 
 		yarn add babel-preset-react babel-preset-env
 		
---
+---
+
 #Build code
 
 1. To compile the code, cd to the project directory,
@@ -45,7 +48,8 @@ Install the local Babel presets needed for this project. The presets are **env**
 
 		src/app.js --out-file=public/scripts/app.js --presets=env,react
 
---
+---
+
 #Testing
 
 I use a combination of **Live-Server** and the **-watch** Babel option to automatically compile and display updates when a code change is detected. The updates will display in a browser window. The commands to do this are, (**NOTE** ensure you are at the project root),
