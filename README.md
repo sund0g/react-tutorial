@@ -3,8 +3,8 @@
 1. Install Node.js from <https://nodejs.org/en/>. Select 'next' until the install is completed. Node.js is the foundation for React.
 
 2. Install Yarn, 
- 		
- 		sudo npm install -g yarn 
+
+		sudo npm install -g yarn 
 Yarn is used to create the React node modules lists, package.json files, etc.
 3. Install Live-Server from <https://www.npmjs.com/package/live-server>.
 
