@@ -51,4 +51,4 @@ I use a combination of **Live-Server** and the **-watch** Babel option to automa
 
 and,
 
-		live-server public
+	live-server public
