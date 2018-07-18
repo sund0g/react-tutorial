@@ -1,3 +1,7 @@
+# Description
+
+This is the coursework from the [Udemy](https://www.udemy.com/) course [The Complete React Developer Course (with Redux)](https://www.udemy.com/react-2nd-edition/learn/v4/content)
+
 # Dev environment setup
 
 1. Install Node.js from <https://nodejs.org/en/>. Select 'next' until the install is completed. Node.js is the foundation for React.
@@ -5,15 +9,23 @@
 2. Install Yarn, 
 
 		sudo npm install -g yarn 
-Yarn is used to create the React node modules lists, package.json files, etc.
+	Yarn is used to create the React node modules lists, package.json files, etc.
+	
 3. Install Live-Server from <https://www.npmjs.com/package/live-server>.
 
 		sudo npm install -g live-server
-Live-Server is a small http server that use used to quickly test updates.
+	Live-Server is a small http server used to quickly test updates.
+	
 4. Install Babel <http://babeljs.io/>.
 		
 		sudo npm install -g  babel-cli
 Babel is the JSX compiler.
+
+5. Editor/IDE choice is left to whoever is re-creating this environment. I am using [Atom](https://atom.io/) with the following packages installed,
+	* [Emmet](https://github.com/emmetio/emmet-atom)
+	* [Emmet Jsx Css Modules](https://github.com/ambethia/emmet-jsx-css-modules)
+	* [git-plus](https://github.com/akonwi/git-plus)
+	* [language-babel](https://atom.io/users/gandm)
 
 # Sync code
 Clone this repo to your local development environment.
@@ -35,7 +47,7 @@ Install the local Babel presets needed for this project. The presets are **env**
 
 # Build and Test
 
-I use a combination of **Live-Server** and the **-watch** Babel option to automatically compile and display updates when a code change is detected. The updates will display in a browser window. The commands to do this are, (**NOTE** ensure you are at the project root),
+I use a combination of **Live-Server** and the **-watch** Babel option to automatically compile and display updates when a code change is detected. The updates will display in a browser window. The commands to do this are, (**NOTE** ensure you are at the project root). I also use 2 tabs, 1 for each command,
 
 
 	babel src/app.js --out-file=public/scripts/app.js --presets=env,react -watch
