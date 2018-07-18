@@ -46,7 +46,7 @@ Install the local Babel presets needed for this project. The presets are **env**
 I use a combination of **Live-Server** and the **-watch** Babel option to automatically compile and display updates when a code change is detected. The updates will display in a browser window. The commands to do this are, (**NOTE** ensure you are at the project root). I also use 2 tabs, 1 for each command,
 
 
-	babel src/display.js --out-file=public/scripts/display.js --presets=env,react -watch
+	babel src/app.js --out-file=public/scripts/app.js --presets=env,react -watch
 
 and,
 
