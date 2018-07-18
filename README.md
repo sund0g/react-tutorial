@@ -33,7 +33,7 @@ Install the local Babel presets needed for this project. The presets are **env**
 
 		yarn add babel-preset-react babel-preset-env
 		
-#Build code
+# Build code
 
 1. To compile the code, cd to the project directory,
 
@@ -42,7 +42,7 @@ Install the local Babel presets needed for this project. The presets are **env**
 
 		src/app.js --out-file=public/scripts/app.js --presets=env,react
 
-#Testing
+# Testing
 
 I use a combination of **Live-Server** and the **-watch** Babel option to automatically compile and display updates when a code change is detected. The updates will display in a browser window. The commands to do this are, (**NOTE** ensure you are at the project root),
 
