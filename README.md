@@ -1,6 +1,6 @@
 # Description
 
-This is the coursework from the [Udemy](https://www.udemy.com/) course [The Complete React Developer Courcer (with Redux)](https://www.udemy.com/react-2nd-edition/learn/v4/content)
+This is the coursework from the [Udemy](https://www.udemy.com/) course [The Complete React Developer Course (with Redux)](https://www.udemy.com/react-2nd-edition/learn/v4/content)
 
 # Dev environment setup
 
