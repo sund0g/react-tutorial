@@ -12,11 +12,11 @@ This is the coursework from the [Udemy](https://www.udemy.com/) course [The Comp
 Yarn is used to create the React node modules lists, package.json files, etc.
 3. Install Live-Server from <https://www.npmjs.com/package/live-server>.
 
-		sudo npm install -g live-server
+		yarn add live-server
 Live-Server is a small http server that use used to quickly test updates.
 4. Install Babel <http://babeljs.io/>.
 		
-		sudo npm install -g  babel-cli
+		yarn add babel-cli
 Babel is the JSX compiler.
 
 # Sync code
@@ -39,14 +39,14 @@ Install the local Babel presets needed for this project. The presets are **env**
 
 # Build and Test
 
-I use a combination of **Live-Server** and the **-watch** Babel option to automatically compile and display updates when a code change is detected. The updates will display in a browser window. The commands to do this are, (**NOTE** ensure you are at the project root),
+I use a combination of **Live-Server** and the **-watch** Babel option to automatically compile and display updates when a code change is detected. The updates will display in a browser window. The commands to do this are, (**NOTE 1** ensure you are at the project root). (**NOTE 2** you can see the actual commands by examining the "scripts" component in "package.json"),
 
 
-	babel src/app.js --out-file=public/scripts/app.js --presets=env,react -watch
+	yarn run build
 
 and,
 
-	live-server public
+	yarn run serve
 	
 # Debugging
 
