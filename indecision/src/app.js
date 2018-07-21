@@ -1,5 +1,3 @@
-// Stateless functional component
-
 class IndecisionApp extends React.Component {
     constructor(props) {
         super(props);
@@ -11,6 +9,33 @@ class IndecisionApp extends React.Component {
             options: []
         };
     }
+
+// Lifecycle methods are only available to class components.
+    componentDidMount() {  // Fires when the component gets mounted to the DOM.
+        try { // Add for edge case where options data is invalid, e.g. '[12}'
+            const json = localStorage.getItem('options');
+            const options = JSON.parse(json); // Convert options back to an object we can then use to set state.
+
+            if (options) { // Add for edge case when nothing is in options.
+                this.setState(() => ({ options}));
+            }
+        } catch(e) {
+            //Do nothing
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) { // Fires after state or props change.
+        if (prevState.options.length !== this.state.options.length) {
+            const json = JSON.stringify(this.state.options); // Convert options to a string so we can save in localStorage.
+            localStorage.setItem('options', json);
+        }
+    }
+
+    componentWillUnmount() { //Fires when a component goes away. Rarely used. Most often with multiple web pages.
+        console.log('component will unmount!');
+    }
+
+// End of lifecycle methods.
 
     handleDeleteOptions() {
         this.setState(() => ({options: []})); // Implicitly returning options.
@@ -65,6 +90,8 @@ class IndecisionApp extends React.Component {
     }
 }
 
+// Stateless functional components
+
 const Header = (props) => { // Was a class; converted to stateless component
     return (
         <div>
@@ -91,6 +118,7 @@ const Options = (props) => { // Was a class; converted to stateless component
     return (
         <div>
             <button onClick={props.handleDeleteOptions}>Remove all</button>
+            {props.options.length === 0 && <p>Please add an option to get started!</p>}
             {
                 props.options.map((option) => (
                     <Option
@@ -119,6 +147,8 @@ const Option = (props) => { // Was a class; converted to stateless component
     );
 };
 
+// End of stateless functional components
+
 class AddOption extends React.Component {
 
     constructor(props) {
@@ -137,6 +167,10 @@ class AddOption extends React.Component {
         this.setState(() => ({error})); // Implicit return
 //            return { error };   // If what we're returning and the variable name are the same
                                 // we don't have to use e.g. error: error.
+
+        if(!error) { // Clear the value in the listbox if no error.
+            e.target.elements.option.value = '';
+        }
     }
 
     render() {
