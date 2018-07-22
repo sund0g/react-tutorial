@@ -5,19 +5,22 @@ This is the coursework from the [Udemy](https://www.udemy.com/) course [The Comp
 # Dev environment setup
 
 1. Install Node.js from <https://nodejs.org/en/>. Select 'next' until the install is completed. Node.js is the foundation for React.
-
 2. Install Yarn, 
 
 		sudo npm install -g yarn 
 Yarn is used to create the React node modules lists, package.json files, etc.
-3. Install Live-Server from <https://www.npmjs.com/package/live-server>.
+3. Install Live-Server from <https://www.npmjs.com/package/live-server>,
 
 		yarn add live-server
 Live-Server is a small http server that use used to quickly test updates.
 4. Install Babel <http://babeljs.io/>.
 		
-		yarn add babel-cli
+		yarn add babel-cli		
 Babel is the JSX compiler.
+5. Install webpack, [webpack](https://en.wikipedia.org/wiki/Webpack), (**NOTE** specifying a specific version for webpack to avoid CLI conflict with babel),
+
+		yarn add webpack@3.1.0
+webpack is used to create the application bundle.
 
 # Sync code
 Clone this repo to your local development environment.
