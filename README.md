@@ -25,6 +25,15 @@ Babel is the JSX compiler.
 		yarn add webpack@3.1.0
 webpack is used to create the application bundle.
 
+6. Install [react](https://www.npmjs.com/package/react) and [react-dom](https://www.npmjs.com/package/react-dom)
+
+		yarn add react react-dom
+		
+7. Install [babel-core](https://www.npmjs.com/package/babel-core) and [babel-loader](https://www.npmjs.com/package/babel-loader),
+
+		yarn add babel-core babel-loader
+Babel-core is used by webpack to convert JSX. Babel-loader is used by webpack to use babel when using certain files.
+
 # Sync code
 Clone this repo to your local development environment.
 
