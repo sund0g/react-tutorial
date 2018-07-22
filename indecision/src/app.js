@@ -1,14 +1,17 @@
-//import './utils.js'; //This simply import the file, but there is no access to any objects it contains.
+// When importing external modules have to do 3 things, install -> import -> use.
+// Also when calling an external module, do not use the relative path name.
+// Validator link: https://www.npmjs.com/package/validator
 
-import anythingIWant, { square, add } from './utils.js'; // only named imports are in {}.
+//import validator from 'validator'
 
-console.log('app.js is running!');
-console.log(square(4));
-console.log(add(100, 23));
-console.log(anythingIWant(100, 81)); // Default functions can be called anything when imported.
+//console.log(validator.isEmail('test@gmail.com'));
 
-import isSenior, { isAdult, canDrink } from './person.js';
+// Now moving on to importing react and react-dom.
+// https://www.npmjs.com/package/react
+// https://www.npmjs.com/package/react-dom
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-console.log(isAdult(21));
-console.log(canDrink(18));
-console.log(isSenior(64));
+const template = <p>THIS IS JSX FROM WEBPACK!</p>;
+
+ReactDOM.render(template, document.getElementById('app'))
