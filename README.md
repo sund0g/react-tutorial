@@ -34,6 +34,10 @@ webpack is used to create the application bundle.
 		yarn add babel-core babel-loader
 Babel-core is used by webpack to convert JSX. Babel-loader is used by webpack to use babel when using certain files.
 
+8. Install webpack dev server (**NOTE** specifying specific version to avoid webpack-cli conflict.),
+		
+		yarn add webpack-dev-server@2.5.1
+
 # Sync code
 Clone this repo to your local development environment.
 
@@ -62,6 +66,11 @@ I use a combination of **Live-Server** and the **-watch** Babel option to automa
 and,
 
 	yarn run serve
+	
+**UPDATE:** For development work I am switching to use **webpack-dev-server** (installed in step 8 above). The new command to both build and refresh the webpage is,
+
+	yarn run dev-server
+This speeds development up a bit. This command is not recommended for production builds.
 	
 # Debugging
 
