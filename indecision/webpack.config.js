@@ -15,5 +15,9 @@ module.exports = {
             test: /\.js$/,
             exclude: /node_modules/
         }]
+    },
+    devtool: 'cheap-module-eval-source-map', // https://webpack.js.org/configuration/devtool/
+    devServer: { // https://webpack.js.org/configuration/dev-server/#src/components/Sidebar/Sidebar.jsx
+        contentBase: path.join(__dirname, 'public')
     }
 };
