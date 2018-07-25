@@ -2,14 +2,11 @@ import React from 'react';
 
 export default class AddOption extends React.Component { // can set up default class like this, but not with other objects.
 
-    constructor(props) {
-        super(props);
-        this.handleAddOption = this.handleAddOption.bind(this);
-        this.state = {
-            error: undefined
-        }
-    }
-    handleAddOption(e) {
+    state = {
+        error: undefined
+    };
+
+    handleAddOption = (e) => {
         e.preventDefault(); //Don't want to reload entire page; only what has changed.
 
         const option = e.target.elements.option.value.trim();
@@ -22,7 +19,7 @@ export default class AddOption extends React.Component { // can set up default c
         if(!error) { // Clear the value in the listbox if no error.
             e.target.elements.option.value = '';
         }
-    }
+    };
 
     render() {
         return (

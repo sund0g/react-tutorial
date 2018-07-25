@@ -8,22 +8,22 @@ This is the coursework from the [Udemy](https://www.udemy.com/) course [The Comp
 2. Install Yarn, 
 
 		sudo npm install -g yarn 
-Yarn is used to create the React node modules lists, package.json files, etc.
+	Yarn is used to create the React node modules lists, package.json files, etc.
 
 3. Install Live-Server from <https://www.npmjs.com/package/live-server>,
 
 		yarn add live-server
-Live-Server is a small http server that use used to quickly test updates.
+	Live-Server is a small http server that use used to quickly test updates.
 
 4. Install Babel <http://babeljs.io/>.
 		
 		yarn add babel-cli		
-Babel is the JSX compiler.
+	Babel is the JSX compiler.
 
 5. Install webpack, [webpack](https://en.wikipedia.org/wiki/Webpack), (**NOTE** specifying a specific version for webpack to avoid CLI conflict with babel),
 
 		yarn add webpack@3.1.0
-webpack is used to create the application bundle.
+	webpack is used to create the application bundle.
 
 6. Install [react](https://www.npmjs.com/package/react) and [react-dom](https://www.npmjs.com/package/react-dom)
 
@@ -32,11 +32,16 @@ webpack is used to create the application bundle.
 7. Install [babel-core](https://www.npmjs.com/package/babel-core) and [babel-loader](https://www.npmjs.com/package/babel-loader),
 
 		yarn add babel-core babel-loader
-Babel-core is used by webpack to convert JSX. Babel-loader is used by webpack to use babel when using certain files.
+	Babel-core is used by webpack to convert JSX. Babel-loader is used by webpack to use babel when using certain files.
 
 8. Install webpack dev server (**NOTE** specifying specific version to avoid webpack-cli conflict.),
 		
 		yarn add webpack-dev-server@2.5.1
+		
+9. Install the babel plugin [transform class properties](https://babeljs.io/docs/en/babel-plugin-transform-class-properties)
+
+		yarn add  babel-plugin-transform-class-properties
+	This enables us to use class properties instead of standard ES6 syntax. This is useful for event handlers as they usually have issues maintaining the 'this' binding.
 
 # Sync code
 Clone this repo to your local development environment.
