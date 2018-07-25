@@ -4,19 +4,48 @@ import Header from './Header'; // Don't have to use .js extension.
 import Action from './Action';
 import Options from './Options';
 
+// Pull state out of constructor
+// Convert all 4 event handlers to class properties (arrow functions)
+// Delete the constructor
+// Start with clas properties and end with methods
+
 export default class IndecisionApp extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-        this.handlePick = this.handlePick.bind(this);
-        this.handleAddOption = this.handleAddOption.bind(this);
-        this.handleDeleteOption = this.handleDeleteOption.bind(this);
-        this.state = {
-            options: []
-        };
-    }
+
+    state = {
+        options: []
+    };
+
+    handleDeleteOptions = () => {
+        this.setState(() => ({options: []})); // Implicitly returning options.
+    };
+
+    handleDeleteOption = (optionToRemove) => {
+        this.setState((prevState) => ({
+            options: prevState.options.filter((option) => optionToRemove !== option) // Implicit return
+        }));
+
+    };
+
+    handlePick = () => {
+        const randomNum = Math.floor(Math.random() * this.state.options.length);
+        const option = this.state.options[randomNum];
+
+        alert(option);
+    };
+
+    handleAddOption = (option) => {
+        if(!option) {
+            return 'Enter valid value to add option';
+        } else if (this.state.options.indexOf(option) > -1) { // -1 because indexOf is 0-based
+            return 'This option already exists';
+        }
+        this.setState((prevState) => ({
+            options: prevState.options.concat(option)
+        })); // Implicit return.
+    };
 
 // Lifecycle methods are only available to class components.
+
     componentDidMount() {  // Fires when the component gets mounted to the DOM.
         try { // Add for edge case where options data is invalid, e.g. '[12}'
             const json = localStorage.getItem('options');
@@ -42,35 +71,6 @@ export default class IndecisionApp extends React.Component {
     }
 
 // End of lifecycle methods.
-
-    handleDeleteOptions() {
-        this.setState(() => ({options: []})); // Implicitly returning options.
-    }
-
-    handleDeleteOption(optionToRemove) {
-        this.setState((prevState) => ({
-            options: prevState.options.filter((option) => optionToRemove !== option) // Implicit return
-        }));
-
-    }
-
-    handlePick() {
-        const randomNum = Math.floor(Math.random() * this.state.options.length);
-        const option = this.state.options[randomNum];
-
-        alert(option);
-    }
-
-    handleAddOption(option) {
-        if(!option) {
-            return 'Enter valid value to add option';
-        } else if (this.state.options.indexOf(option) > -1) { // -1 because indexOf is 0-based
-            return 'This option already exists';
-        }
-        this.setState((prevState) => ({
-            options: prevState.options.concat(option)
-        })); // Implicit return.
-    }
 
     render() {
         const title = 'Indecision';
