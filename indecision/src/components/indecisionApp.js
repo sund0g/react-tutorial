@@ -3,6 +3,7 @@ import AddOption from './AddOption.js'; // Remember, default exports are not in 
 import Header from './Header'; // Don't have to use .js extension.
 import Action from './Action';
 import Options from './Options';
+import OptionModal from './OptionModal';
 
 // Pull state out of constructor
 // Convert all 4 event handlers to class properties (arrow functions)
@@ -12,7 +13,8 @@ import Options from './Options';
 export default class IndecisionApp extends React.Component {
 
     state = {
-        options: []
+        options: [],
+        selectedOption: undefined
     };
 
     handleDeleteOptions = () => {
@@ -30,7 +32,9 @@ export default class IndecisionApp extends React.Component {
         const randomNum = Math.floor(Math.random() * this.state.options.length);
         const option = this.state.options[randomNum];
 
-        alert(option);
+        this.setState(() => ({
+            selectedOption: option
+        }));
     };
 
     handleAddOption = (option) => {
@@ -43,6 +47,14 @@ export default class IndecisionApp extends React.Component {
             options: prevState.options.concat(option)
         })); // Implicit return.
     };
+
+    // Create event handler that clears selectedOption state.
+    // Pass that into OptionModal
+    // Call it on button click
+
+    handleClearSelectedOption = () => {
+      this.setState(() => ({ selectedOption: undefined }));
+    }
 
 // Lifecycle methods are only available to class components.
 
@@ -90,6 +102,10 @@ export default class IndecisionApp extends React.Component {
                 />
                 <AddOption
                     handleAddOption={this.handleAddOption}
+                />
+                <OptionModal
+                    selectedOption={this.state.selectedOption}
+                    handleClearSelectedOption={this.handleClearSelectedOption}
                 />
             </div>
         );
