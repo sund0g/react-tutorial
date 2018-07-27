@@ -42,6 +42,12 @@ This is the coursework from the [Udemy](https://www.udemy.com/) course [The Comp
 
 		yarn add  babel-plugin-transform-class-properties
 	This enables us to use class properties instead of standard ES6 syntax. This is useful for event handlers as they usually have issues maintaining the 'this' binding.
+	
+10. Install [react-modal](https://github.com/reactjs/react-modal)
+
+		yarn add react-modal
+		
+	This enables us to create custom dialogs instead of the previously used alert.
 
 # Sync code
 Clone this repo to your local development environment.

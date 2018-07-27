@@ -5,6 +5,7 @@ import IndecisionApp from './components/IndecisionApp'
 
 ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
 
+/*
 class OldSyntax {
     constructor() {
         this.name = 'Scott';
@@ -34,3 +35,5 @@ class NewSyntax {
 const newSyntax = new NewSyntax();
 const newGetGreeting = newSyntax.getGreeting;
 console.log(newGetGreeting());
+
+*/
