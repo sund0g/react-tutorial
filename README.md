@@ -66,6 +66,14 @@ Install the local Babel presets needed for this project. The presets are **env**
 2. Now add the presets,
 
 		yarn add babel-preset-react babel-preset-env
+		
+3. Set up webpack to work with scss by installing [css-loader](https://www.npmjs.com/package/css-loader) and [style-loader](https://www.npmjs.com/package/style-loader),
+
+		yarn add style-loader css-loader
+		
+4. Finally, add [sass-loader](https://www.npmjs.com/package/sass-loader) enabling us to import sass files, and [node-sass](https://www.npmjs.com/package/node-sass) enabling us to convert sass/scss files into css,
+
+		yarn add sass-loader node-sass
 
 # Build and Test
 
