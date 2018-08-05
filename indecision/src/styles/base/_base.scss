@@ -1,0 +1,12 @@
+// the '_' as part of the filename denotes in scss that the file is only part of the overall css.
+// When importing this file the syntx does not list the '_' or the .scss extension, e.g. reference styles.scss.
+
+html {
+    font-size: 62.5%;   // 16 pixel base * .625 = 10. This means we are working with rems
+                        // in a base 10 system, just like pixels.
+}
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 1.6rem;
+}

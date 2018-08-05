@@ -1,0 +1,24 @@
+.header {
+    background: #20222b;
+    margin-bottom: 4.8rem;
+    color: white; // text color
+    padding: 1.6rem 0; // 16px top and bottom, 0 left and right
+}
+
+// Using (B)lock (E)lement (M)odifier namong convention here for class selectors.
+// http://getbem.com/
+// Block means something big, like .header.
+// Element means something insude the block, like title.
+// When we see this it tells us we are targeting a title somewhere in header.
+
+.header__title {
+    font-size: 3.2rem;
+    margin: 0; // 0 margin on all 4 sides.
+}
+
+.header__subtitle {
+    color: #a5afd7;
+    font-size: 1.6rem;
+    font-weight: 500; // normal
+    margin: 0;
+}
