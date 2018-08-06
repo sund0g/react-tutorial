@@ -1,7 +1,8 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import IndecisionApp from './components/IndecisionApp';
+import IndecisionApp from './components/IndecisionApp'; // This adds the css reset to ensure all browers start from the same styles.
+import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
 ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
