@@ -1,5 +1,6 @@
 @import './base/settings';  // This needs to be first so the rest can use the settings.
                             // Order doesn't matter for the rest.
 @import './base/base';
+@import './components/button';
 @import './components/container';
 @import './components/header';

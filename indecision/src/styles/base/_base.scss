@@ -11,3 +11,14 @@ body {
     font-family: Helvetica, Arial, sans-serif;
     font-size: $m-size;
 }
+
+//
+// Th button functions here apply to all buttons in the app.
+//
+button {
+    cursor: pointer; // This puts the little hand cursor when the button is available.
+}
+
+button:disabled {
+    cursor: default; // This puts the arrow indicating the button is not available.
+}
