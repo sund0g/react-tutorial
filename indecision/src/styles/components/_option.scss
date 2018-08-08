@@ -10,5 +10,6 @@
     color: white;
     font-weight: 500;
     font-size: 2rem;
-    marigin: 0;
+    margin: 0;
+    word-break: break-all; // Ensure really long words get broken up into lines.
 }
