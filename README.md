@@ -71,9 +71,13 @@ Install the local Babel presets needed for this project. The presets are **env**
 
 		yarn add style-loader css-loader
 		
-4. Finally, add [sass-loader](https://www.npmjs.com/package/sass-loader) enabling us to import sass files, and [node-sass](https://www.npmjs.com/package/node-sass) enabling us to convert sass/scss files into css,
+4. Add [sass-loader](https://www.npmjs.com/package/sass-loader) enabling us to import sass files, and [node-sass](https://www.npmjs.com/package/node-sass) enabling us to convert sass/scss files into css,
 
 		yarn add sass-loader node-sass
+	
+5. Install [Normalize.css](https://necolas.github.io/normalize.css/) to ensure we get the same behavior in all browsers,
+
+		yarn add normalize.css
 
 # Build and Test
 

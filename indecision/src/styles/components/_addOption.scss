@@ -1,0 +1,25 @@
+// addOption-error
+.addOption-error {
+    color: $off-white;
+    font-style: italic;
+    margin: $m-size 0 0 0;
+    padding: 0 $m-size;
+
+}
+
+// addOption
+.addOption {
+    display: flex;
+    padding: $m-size;
+}
+
+// Element selector
+.addOption__input {
+    background: $dark-blue;
+    border: none; // get rid of all borders and then immediately put in the bottom border.
+    border-bottom: .3rem solid darken($dark-blue, 10%);
+    color: $off-white;
+    flex-grow: 1; // Take all available space
+    margin-right: $s-size; // Put a bit of space between the text bos and the button.
+    padding: $s-size;
+}

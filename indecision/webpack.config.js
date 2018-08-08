@@ -15,7 +15,8 @@ module.exports = {
             test: /\.js$/, // include any file with .js extension.
             exclude: /node_modules/
         }, {
-            test: /\.scss$/, // include any files with .scss extension.
+            test: /\.s?css$/,   // include any files with .scss  or .css extension.
+                                // the '?' makes the 's' optional so webpack will include both.
             use: [ // here we need multiple loaders. Do this with an array.
                 'style-loader',
                 'css-loader',
