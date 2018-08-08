@@ -3,8 +3,8 @@ import React from 'react';
 // Was a class; converted to stateless component
 
 const Option = (props) => (
-    <div>
-        {props.optionText}
+    <div className="option">
+        <p className="option__text">{props.count}. {props.optionText}</p>
         <button
             className="button button--link"
             onClick={(e) => {
