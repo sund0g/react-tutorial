@@ -1,4 +1,4 @@
-##Description
+## Description
 
 This is the coursework from the [Udemy](https://www.udemy.com/) course [The Complete React Developer Course (with Redux)](https://www.udemy.com/react-2nd-edition/learn/v4/content)
 
@@ -8,7 +8,7 @@ This is the coursework from the [Udemy](https://www.udemy.com/) course [The Comp
 
 **Boilerplate** is a template dev environment that can be modified for any web app development using React.
 
-##Dev environment setup
+## Dev environment setup
 
 1. Install Node.js from <https://nodejs.org/en/>. Select 'next' until the install is completed. Node.js is the foundation for React.
 2. Install Yarn, 
@@ -55,7 +55,7 @@ This is the coursework from the [Udemy](https://www.udemy.com/) course [The Comp
 		
 	This enables us to create custom dialogs instead of the previously used alert.
 
-###The following components are used by the Expensify application.
+### The following components are used by the Expensify application.
 
 11. Install [React Router](https://reacttraining.com/react-router/)
 		
@@ -63,12 +63,12 @@ This is the coursework from the [Udemy](https://www.udemy.com/) course [The Comp
 
 	**Note** because we are only working with web apps in the course, we don't need the native Android and iOS features.
 
-##Sync code
+## Sync code
 Clone this repo to your local development environment.
 
 	git clone (use with HTTPS or SSH)
 
-##Project-specific setup
+## Project-specific setup
 
 Install the local Babel presets needed for this project. The presets are **env** and **react**
 
@@ -93,13 +93,13 @@ Install the local Babel presets needed for this project. The presets are **env**
 
 		yarn add normalize.css
 
-##Build and Test
+## Build and Test
 	
 For development work I use **webpack-dev-server** (installed in step 8 above). The command to both build and refresh the webpage is,
 
 	yarn run dev-server
 This speeds development up a bit. This command is not recommended for production builds.
 	
-##Debugging
+## Debugging
 
 Because I use Chrome, I have added the [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) from the Chrome Web Store. If you install the tools and you have an existing debug tab open, you will need to close and reopen a new tab to activate the tools.
