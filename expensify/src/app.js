@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
@@ -28,20 +28,29 @@ const HelpPage = () => (
     </div>
 );
 
-// Using Route methods,
+const NotFoundPage = () => (
+    <div>
+        404!
+    </div>
+);
+
+// Using React Route methods,
 //  path        This tells where to look
 //  component   This tells what component to load when the path is matched.
 //  exact       This tells the matching to be exact.
 // All methods are here: https://reacttraining.com/react-router/web/api/Route
 
+// The React Route method Switch works just like a regular switch statement.
+
 const routes = (
     <BrowserRouter>
-        <div>
+        <Switch>
           <Route path="/" component={ExpenseDashboardPage} exact={true} />
           <Route path="/create" component={AddExpensePage} />
           <Route path="/edit" component={EditExpensePage} />
           <Route path="/help" component={HelpPage} />
-        </div>
+          <Route component={NotFoundPage} />
+      </Switch>
     </BrowserRouter>
 );
 
