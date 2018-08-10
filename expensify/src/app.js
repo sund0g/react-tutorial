@@ -1,7 +1,48 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
-ReactDOM.render(<p>boilerplate</p>, document.getElementById('app'));
+const ExpenseDashboardPage = () => (
+    <div>
+        This is from my dashboard component
+    </div>
+);
+
+const AddExpensePage = () => (
+    <div>
+        This is from my add expense component
+    </div>
+);
+
+const EditExpensePage = () => (
+    <div>
+        This is from my edit expense component
+    </div>
+);
+
+const HelpPage = () => (
+    <div>
+        This is from my help component
+    </div>
+);
+
+// Using Route methods,
+//  path        This tells where to look
+//  component   This tells what component to load when the path is matched.
+//  exact       This tells the matching to be exact.
+// All methods are here: https://reacttraining.com/react-router/web/api/Route
+
+const routes = (
+    <BrowserRouter>
+        <div>
+          <Route path="/" component={ExpenseDashboardPage} exact={true} />
+          <Route path="/create" component={AddExpensePage} />
+          <Route path="/edit" component={EditExpensePage} />
+          <Route path="/help" component={HelpPage} />
+        </div>
+    </BrowserRouter>
+);
+
+ReactDOM.render(routes, document.getElementById('app'));
