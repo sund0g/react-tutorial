@@ -26,6 +26,8 @@ module.exports = {
     },
     devtool: 'cheap-module-eval-source-map', // https://webpack.js.org/configuration/devtool/
     devServer: { // https://webpack.js.org/configuration/dev-server/#src/components/Sidebar/Sidebar.jsx
-        contentBase: path.join(__dirname, 'public')
+        contentBase: path.join(__dirname, 'public'),
+        historyApiFallback: true    // We're telling devServer to handle routing via client side code.
+                                    // therefore it should return index.html for all 404 routes.
     }
 };
