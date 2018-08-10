@@ -10,6 +10,7 @@
 // addOption
 .addOption {
     display: flex;
+    flex-direction: column; // default to mobile render, i.e. stack textbox and button.
     padding: $m-size;
 }
 
@@ -20,6 +21,18 @@
     border-bottom: .3rem solid darken($dark-blue, 10%);
     color: $off-white;
     flex-grow: 1; // Take all available space
-    margin-right: $s-size; // Put a bit of space between the text bos and the button.
+    margin: 0 0 $s-size 0;
     padding: $s-size;
+}
+
+// This is css not scss feature
+@media (min-width: $desktop-breakpoint) { // when to apply the mobile styles. Here we will target what to change when not on mobile devices.
+    * {
+        .addOption {
+            flex-direction: row; // Here we are targeting the option textbox to render the textbox and the button on the same row.
+        }
+    }
+    .addOption__input {
+        margin-right: $s-size; // Put a bit of space between the text box and the button
+    }
 }

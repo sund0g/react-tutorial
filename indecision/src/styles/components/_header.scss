@@ -1,6 +1,6 @@
 .header {
     background: $off-black;
-    margin-bottom: $xl-size;
+    margin-bottom: $m-size;
     color: white; // text color
     padding: $m-size 0; // 16px top and bottom, 0 left and right
 }
@@ -21,4 +21,10 @@
     font-size: $m-size;
     font-weight: 500; // normal
     margin: 0;
+}
+
+@media (min-width: $desktop-breakpoint) {
+    .header {
+        margin-bottom: $xl-size;
+    }
 }
