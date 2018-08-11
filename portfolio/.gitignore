@@ -1,0 +1,5 @@
+# Ignore the node_modules directory. It is created by yarn.
+node_modules/*
+
+# Ignore yarn.lock. It is created by yarn
+yarn.lock

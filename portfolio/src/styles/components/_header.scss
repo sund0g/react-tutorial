@@ -1,0 +1,28 @@
+.header {
+    margin-bottom: $m-size;
+    color: white; // text color
+    padding: $m-size 0; // 16px top and bottom, 0 left and right
+}
+
+// Using (B)lock (E)lement (M)odifier namong convention here for class selectors.
+// http://getbem.com/
+// Block means something big, like .header.
+// Element means something insude the block, like title.
+// When we see this it tells us we are targeting a title somewhere in header.
+
+.header__title {
+    font-size: $l-size;
+    margin: 0; // 0 margin on all 4 sides.
+}
+
+.header__subtitle {
+    font-size: $m-size;
+    font-weight: 500; // normal
+    margin: 0;
+}
+
+@media (min-width: $desktop-breakpoint) {
+    .header {
+        margin-bottom: $xl-size;
+    }
+}
