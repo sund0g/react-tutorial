@@ -63,6 +63,10 @@ This is the coursework from the [Udemy](https://www.udemy.com/) course [The Comp
 
 	**Note** because we are only working with web apps in the course, we don't need the native Android and iOS features.
 
+12. Install [Redux](https://redux.js.org/) which is what we use to preserve state
+
+		yarn add redux
+
 ## Sync code
 Clone this repo to your local development environment.
 
