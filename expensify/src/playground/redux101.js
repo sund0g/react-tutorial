@@ -4,13 +4,19 @@ const store = createStore((state = { count: 0 }, action) => {   // Setting the d
                                                                 // Action is whatever action we want to perform on state.
     switch (action.type) {
         case 'INCREMENT':
+            const incrementBy = typeof action.incrementBy === 'number' ? action.incrementBy: 1;
             return {
-                count: state.count + 1
+                count: state.count + incrementBy
             };
         case 'DECREMENT':
+            const decrementBy = typeof action.decrementBy === 'number' ? action.decrementBy: 1;
             return {
-                count: state.count - 1
+                count: state.count - decrementBy
             };
+        case 'SET':
+            return {
+                count: action.count
+            }
         case 'RESET':
             return {
                 count: 0
@@ -20,21 +26,30 @@ const store = createStore((state = { count: 0 }, action) => {   // Setting the d
     };
 });
 
-console.log(store.getState());
-
 //
 // Redux action types
 //
 
-// Increment count object
-store.dispatch({
-    type: 'INCREMENT'   // Uppercase is the recommended Redux notation for action type names.
-                        // multiple words are '_' separated.
-                        // NOTE: 'type' is the minimal thing provided to all actions.
+// This method gets called each time the store changes. Used for dynamic updating.
+// Setting up unsubscribe so we can unsubscribe as we desire later.
+const unsubscribe = store.subscribe(() => {
+    console.log(store.getState());
 });
 
+
+// Increment count object
 store.dispatch({
-    type: 'INCREMENT'
+    type: 'INCREMENT',  // Uppercase is the recommended Redux notation for action type names.
+                        // multiple words are '_' separated.
+                        // NOTE: 'type' is the minimal thing provided to all actions.
+        incrementBy: 5
+});
+
+// Call unsubscribe when the subscription is no longer needed.
+// unsubscribe();
+
+store.dispatch({
+    type: 'INCREMENT',
 });
 
 // Reset count object
@@ -47,4 +62,12 @@ store.dispatch({
     type: 'DECREMENT'
 });
 
-console.log(store.getState());
+store.dispatch({
+    type: 'DECREMENT',
+    decrementBy: 10
+});
+
+store.dispatch({
+    type: 'SET',
+    count: 101
+});
