@@ -43,7 +43,13 @@ const setCount = ({ count } = {}) => ({ // No need for default value because it'
     count
 });
 
-const store = createStore((state = { count: 0 }, action) => {   // Setting the default state inline because not using a constructor.
+// Reducers
+// Key attributes:
+// 1. Are pure functions, i.e. the output is solely determined by the input; it doesn't change anything
+//    outside the function scope, and doesn't use anything outside the function scope.
+// 2. Never change state or action.
+
+const countReducer = (state = { count: 0 }, action) => {   // Setting the default state inline because not using a constructor.
                                                                 // Action is whatever action we want to perform on state.
     switch (action.type) {
         case 'INCREMENT':
@@ -68,7 +74,9 @@ const store = createStore((state = { count: 0 }, action) => {   // Setting the d
         default:
             return state;
     };
-});
+};
+
+const store = createStore(countReducer);
 
 //
 // Redux action types
