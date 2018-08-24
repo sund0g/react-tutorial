@@ -96,6 +96,10 @@ Install the local Babel presets needed for this project. The presets are **env**
 5. Install [Normalize.css](https://necolas.github.io/normalize.css/) to ensure we get the same behavior in all browsers,
 
 		yarn add normalize.css
+		
+6. Install [uuid](https://www.npmjs.com/package/uuid) so we can create random ids as part of Section 10 Lecture 93,
+
+		yarn add uuid
 
 ## Build and Test
 	
