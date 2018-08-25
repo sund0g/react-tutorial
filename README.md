@@ -100,6 +100,16 @@ Install the local Babel presets needed for this project. The presets are **env**
 6. Install [uuid](https://www.npmjs.com/package/uuid) so we can create random ids as part of Section 10 Lecture 93,
 
 		yarn add uuid
+		
+7. Install [babel-plugin-transform-object-rest-spread](https://babeljs.io/docs/en/babel-plugin-transform-object-rest-spread.html),
+
+		yarn add babel-plugin-transform-object-rest-spread
+		
+	We need this because the spread operator at this point is not fully supported for objects.
+	
+	After installing, update the .babelrc "plugins" section with,
+	
+		"transform-object-rest-spread"
 
 ## Build and Test
 	
