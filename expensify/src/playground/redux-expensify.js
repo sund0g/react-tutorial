@@ -2,7 +2,6 @@ import { createStore, combineReducers } from 'redux';
 import uuid from 'uuid';
 
 // Add expense action generator
-
 const addExpense = (
     {
         description = '',
@@ -21,25 +20,47 @@ const addExpense = (
 });
 
 // Remove expense action generator
-
 const removeExpense = ({ id } = {}) => ({
     type: 'REMOVE_EXPENSE',
     id
 });
 
+// Edit expense action generator
+const editExpense = (id, updates) => ({ // don't need defaults here as we have to have something to edit.
+    type: 'EDIT_EXPENSE',
+    id,
+    updates,
+});
+
 // Set text filter action generator
+const setTextFilter = (text = '') => ({
+    type: 'SET_TEXT_FILTER',
+    text,
+});
 
 // Sort by date action generator
+const sortByDate = () => ({
+    type: 'SORT_BY_DATE',
+});
 
 // Sort by amount action generator
+const sortByAmount = () => ({
+    type: 'SORT_BY_AMOUNT',
+});
 
 // Set start date action generator
+const setStartDate = (startDate) => ({
+    type: 'SET_START_DATE',
+    startDate,
+});
 
 // Set end date action generator
-
+const setEndDate = (endDate) => ({
+    type: 'SET_END_DATE',
+    endDate,
+});
 
 // Expenses reducer
-
 const expensesReducerDefaultState = []; // the default state will be an empty array, i.e no expenses.
 
 //
@@ -60,16 +81,25 @@ const expensesReducer = (state = expensesReducerDefaultState, action) => {
                 action.expense,
             ];
         case 'REMOVE_EXPENSE':
-            // remember .filter does not change state, it returns a new array with the filtered subset.
-            return state.filter(({ id }) => id !== action.id // if the id passed in does not match the action id keep it, else remove it.
-            );
+            // Remember .filter does not change state, it returns a new array with the filtered subset.
+            return state.filter(({ id }) => id !== action.id);// if the id passed in does not match the action id keep it, else remove it.
+        case 'EDIT_EXPENSE':
+            return state.map((expense) => {
+                if (expense.id === action.id) {
+                    return { //using object spread operator
+                        ...expense,
+                        ...action.updates,
+                    };
+                } else {
+                    return expense; // Couldn't find an expense that matched action.id passed in.
+                };
+            });
         default:
             return state;
     };
 };
 
 // Filters Reducer
-
 const filtersReducerDefaultState = {
     text: '',
     sortBy: 'Date',
@@ -79,13 +109,37 @@ const filtersReducerDefaultState = {
 
 const filtersReducer = (state = filtersReducerDefaultState, action) => {
     switch (action.type) {
+        case 'SET_TEXT_FILTER':
+            return {
+                ...state,
+                text: action.text,
+            };
+        case 'SORT_BY_AMOUNT':
+            return {
+                ...state,
+                sortBy: 'amount',
+            };
+        case 'SORT_BY_DATE':
+            return {
+                ...state,
+                sortBy: 'date',
+            };
+        case 'SET_START_DATE':
+            return {
+                ...state,
+                startDate: action.startDate,
+            };
+        case 'SET_END_DATE':
+            return {
+                ...state,
+                endDate: action.endDate,
+            };
         default:
             return state;
     };
 };
 
 // Store creation
-
 const store = createStore(
     combineReducers({
         expenses: expensesReducer, // setting expenses to be managed by the expenses reducer.
@@ -94,7 +148,6 @@ const store = createStore(
 );
 
 // subscribe to the store
-
 store.subscribe(() => {
     console.log(store.getState());
 });
@@ -112,6 +165,25 @@ const expenseTwo = store.dispatch(addExpense({ description: 'Coffee', amount: 30
 // step 3: add REMOVE_EXPENSE to expenseReducer
 
 store.dispatch(removeExpense({ id: expenseOne.expense.id }));
+
+// Playing aroung with spreading objects
+
+store.dispatch(editExpense(expenseTwo.expense.id, { amount: 500 })); // can send in multiple updates.
+
+// Challenge: update filters by changing the text property.
+
+store.dispatch(setTextFilter('rent'));
+store.dispatch(setTextFilter(''));
+
+// Challenge: finish up the filters reducer.
+
+store.dispatch(sortByAmount());
+store.dispatch(sortByDate());
+
+store.dispatch(setStartDate(125)); // 125 is just a placeholder
+store.dispatch(setStartDate()); // resetting to default
+
+store.dispatch(setEndDate(42)); // 42 is just a placeholder
 
 const demoState = { // This is all the data we want to track
     expenses: [{    // expenses is an array of objects
