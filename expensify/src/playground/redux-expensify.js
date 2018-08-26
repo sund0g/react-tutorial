@@ -139,6 +139,22 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
     };
 };
 
+// Get visible expenses
+const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
+    return expenses.filter((expense) => {
+        const startDateMatch = typeof startDate !== 'number' || expense.createdAt >= startDate;
+        const endDateMatch = typeof endDate !== 'number' || expense.createdAt <= endDate;
+        // A lot of fn concatenation crap going on here...
+        // Basically whay we're saying is, if the lower case expense description matches
+        // matches the deconstructed text (also lower cased), then set textMatch = true.
+        // Boolean is what the equation right of = returns.
+        const textMatch = expense.description.toLowerCase().includes(text.toLowerCase());
+
+        // IFF all 3 are true, return the expense object as part of the filtered array.
+        return startDateMatch && endDateMatch && textMatch;
+    });
+};
+
 // Store creation
 const store = createStore(
     combineReducers({
@@ -149,41 +165,42 @@ const store = createStore(
 
 // subscribe to the store
 store.subscribe(() => {
-    console.log(store.getState());
+    const state = store.getState();
+    const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
+    console.log(visibleExpenses);
 });
 
 // Start making changes to the store
 
 // .dispatch returns the action object so we can capture the information in a variable.
 // This enables us to use things like the uuid to manipulate the expenses.
-const expenseOne = store.dispatch(addExpense({ description: 'Rent', amount: 100 }));
-const expenseTwo = store.dispatch(addExpense({ description: 'Coffee', amount: 300 }));
+const expenseOne = store.dispatch(addExpense({ description: 'Rent', amount: 100, createdAt: 1000 })); // created 1 sec after 01, Jan 1970
+const expenseTwo = store.dispatch(addExpense({ description: 'Coffee', amount: 300, createdAt: -1000 })); // created 1 sec before 01, Jan 1970
 
 // Challenge: remove expenseOne
 // step 1: create call to store to remove expense
 // step 2: create removeExpense action generator
 // step 3: add REMOVE_EXPENSE to expenseReducer
 
-store.dispatch(removeExpense({ id: expenseOne.expense.id }));
+//store.dispatch(removeExpense({ id: expenseOne.expense.id }));
 
 // Playing aroung with spreading objects
 
-store.dispatch(editExpense(expenseTwo.expense.id, { amount: 500 })); // can send in multiple updates.
+//store.dispatch(editExpense(expenseTwo.expense.id, { amount: 500 })); // can send in multiple updates.
 
 // Challenge: update filters by changing the text property.
 
 store.dispatch(setTextFilter('rent'));
-store.dispatch(setTextFilter(''));
+//store.dispatch(setTextFilter(''));
 
 // Challenge: finish up the filters reducer.
 
-store.dispatch(sortByAmount());
-store.dispatch(sortByDate());
+//store.dispatch(sortByAmount());
+//store.dispatch(sortByDate());
 
-store.dispatch(setStartDate(125)); // 125 is just a placeholder
-store.dispatch(setStartDate()); // resetting to default
-
-store.dispatch(setEndDate(42)); // 42 is just a placeholder
+//store.dispatch(setStartDate(0)); // 125 is just a placeholder
+//store.dispatch(setStartDate()); // resetting to default
+//store.dispatch(setEndDate(999)); // 42 is just a placeholder
 
 const demoState = { // This is all the data we want to track
     expenses: [{    // expenses is an array of objects
