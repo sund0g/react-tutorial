@@ -144,7 +144,7 @@ const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
     return expenses.filter((expense) => {
         const startDateMatch = typeof startDate !== 'number' || expense.createdAt >= startDate;
         const endDateMatch = typeof endDate !== 'number' || expense.createdAt <= endDate;
-        // A lot of fn concatenation crap going on here...
+        // A lot of fn chaining crap going on here...
         // Basically whay we're saying is, if the lower case expense description matches
         // matches the deconstructed text (also lower cased), then set textMatch = true.
         // Boolean is what the equation right of = returns.
@@ -152,6 +152,12 @@ const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
 
         // IFF all 3 are true, return the expense object as part of the filtered array.
         return startDateMatch && endDateMatch && textMatch;
+    }).sort((a, b) => { // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+        if (sortBy === 'date') {
+            return a.createdAt < b.createdAt ? 1 : -1;
+        } else if (sortBy === 'amount') {
+            return a.amount < b.amount ? 1 : -1;
+        }
     });
 };
 
@@ -174,8 +180,8 @@ store.subscribe(() => {
 
 // .dispatch returns the action object so we can capture the information in a variable.
 // This enables us to use things like the uuid to manipulate the expenses.
-const expenseOne = store.dispatch(addExpense({ description: 'Rent', amount: 100, createdAt: 1000 })); // created 1 sec after 01, Jan 1970
-const expenseTwo = store.dispatch(addExpense({ description: 'Coffee', amount: 300, createdAt: -1000 })); // created 1 sec before 01, Jan 1970
+const expenseOne = store.dispatch(addExpense({ description: 'Rent', amount: 100, createdAt: -21000 }));
+const expenseTwo = store.dispatch(addExpense({ description: 'Coffee', amount: 300, createdAt: -1000 }));
 
 // Challenge: remove expenseOne
 // step 1: create call to store to remove expense
@@ -190,12 +196,12 @@ const expenseTwo = store.dispatch(addExpense({ description: 'Coffee', amount: 30
 
 // Challenge: update filters by changing the text property.
 
-store.dispatch(setTextFilter('rent'));
+//store.dispatch(setTextFilter('rent'));
 //store.dispatch(setTextFilter(''));
 
 // Challenge: finish up the filters reducer.
 
-//store.dispatch(sortByAmount());
+store.dispatch(sortByAmount());
 //store.dispatch(sortByDate());
 
 //store.dispatch(setStartDate(0)); // 125 is just a placeholder
